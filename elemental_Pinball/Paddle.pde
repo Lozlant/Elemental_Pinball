@@ -1,6 +1,7 @@
 class Paddle{
     PVector pos;
     float width_;
+    float speed;
 
     char element;
     char leftKey,rightKey;
@@ -13,7 +14,13 @@ class Paddle{
 
         width_=64;
         pos=new PVector((playfield_Topleft.x+playfield_Bottomright.x-width_)/2,287);//comfirm the coordinate
-        
+        speed=5;
+    }
+    void move(){
+        if(goRight)
+            pos.x=constrain(pos.x+speed, playfield_Topleft.x+5, playfield_Bottomright.x-width_-5);
+        if(goLeft)
+            pos.x=constrain(pos.x-speed, playfield_Topleft.x+5, playfield_Bottomright.x-width_-5);
     }
 
     void direction(char key){

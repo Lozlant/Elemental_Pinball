@@ -29,7 +29,7 @@ void draw(){
     drawPlayField();
     drawRemainingBalls();//Draw the remaining balls.画出剩余的球
     
-    //paddle.move();
+    paddle.move();
     paddle.show();
 
     //for(Block block:blocks)block.show();//Display the level.显示关卡
