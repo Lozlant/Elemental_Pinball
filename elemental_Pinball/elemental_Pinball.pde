@@ -3,8 +3,7 @@
 //intended for the convenience of the author's personal reading.
 
 Paddle paddle;
-Block[][] blocks = new Block[8][8];
-
+Block[][] blocks = new Block[9][8];//9 blocks per line, 8 lines
 Timer timer;
 
 int score;
@@ -34,8 +33,12 @@ void draw(){
     
     
 
-    //for(Block block:blocks)block.show();//Display the level.显示关卡
-
+    for(int i=0;i<9;i++){
+        for(int j=0;j<8;j++){
+            //if(blocks[i][j].exist)println("Success to draw",i," ",j);
+            blocks[i][j].show();//Display the level.显示关卡
+        }
+    }
     if(isBallMoving){
         for(int i=0;i<currentBalls.size();i++){
             Ball ball=currentBalls.get(i);
@@ -81,6 +84,9 @@ void reset(){
 
     paddle=new Paddle(' ', 'A', 'D');
     
+    //初始化block;
+    String level1 = "315 2232 414 41112";//See the first draft for understand, more levels will be designed later!图详见初版草稿，关卡会后续设计更多
+    initializeLevel(level1);
 }
 
 void keyPressed(){
@@ -107,4 +113,36 @@ int collidBlocks(){
 }  
 void startANewTurn(){//start a new shooting turn
     currentBalls.add(new Ball(paddle.middleX,paddle.pos.y-ballRadius,ballRadius));
+}
+void initializeLevel(String s){//Decode the string that represents a level 解码代表关卡的代码
+    for(int i=0;i<9;i++){
+        for(int j=0;j<8;j++){
+            blocks[i][j]=new Block(i,j,false);
+        }
+    }//Initialize the blocks to blank
+
+    boolean exist=true;
+    int line=0,column=0;
+   // println("solve:", s);
+    for(int i=0;i<s.length();i++){
+        //print("Current solve",s.charAt(i));
+        if(s.charAt(i)==' '){line++;column=0;exist=true;continue;}//Open a new line when a space is encountered 遇到空格开启新一行
+        if(s.charAt(i)=='0'){exist=false;continue;}//A zero at the beginning of the number set means that the line starts with a blank.以0打头代表这行开头是空的
+        //println(" ",exist);
+        for(int j=0;j<s.charAt(i)-'1'+1;j++){
+            //println(" ",line," ",column);
+            blocks[column][line].exist=exist;
+            column++;
+        }
+        exist=!exist;//The next number in the same set of numbers represents, contrary to the present, the null or exist.同一组数字中的下一个数字代表，与现在相反的空或者有
+    }
+
+    /*for(int i=0;i<9;i++){
+        for(int j=0;j<8;j++){
+            print(blocks[i][j].pos," ");
+            //if(blocks[i][j].exist)print("T"," ");
+            //else print("F"," ");
+        }
+        println();
+    }*/
 }
