@@ -71,6 +71,11 @@ void draw(){
             }
         }
         
+        if(combo>=3){// Split when achieving a combo of 5.连击达到5，分裂
+            combo=0;
+            currentBalls.add(new Ball(currentBalls.get(0).pos.x,currentBalls.get(0).pos.y,ballRadius));// Split a ball at the position of the ball in sequence 0.
+        }
+        
         
     }
     else{
