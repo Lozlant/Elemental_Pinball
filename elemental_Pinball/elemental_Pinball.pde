@@ -17,12 +17,16 @@ PVector playfield_Topleft=new PVector(23.5,25);
 PVector playfield_Bottomright=new PVector(291,313);//The coordinates of the top-left and bottom-right corners of the game field.游戏区左上角和右下角的坐标
 
 float ballRadius=7;
+float blocksize;
 
 void setup(){
     size(400,400);
+    
+    blocksize=(playfield_Bottomright.x-playfield_Topleft.x)/10;// Initialization must occur before constructing the block group.
+    isBallMoving=false;
+
     reset();
     startANewTurn();
-    isBallMoving=false;
 }
 
 
@@ -54,13 +58,17 @@ void draw(){
                 if(currentBalls.size()==0){isBallMoving=false;startANewTurn();}//If all the balls are gone, it's over. and restarted.
             }
 
-            if(collidBlocks()>=0){
-            //Element reaction.元素反应
             
-            }
 
             ball.move();
             ball.show();
+
+            if(ball.directionOfHitBlock>0){//Must be after the ball.move(),If the ball collides with a block, make the block disappear.
+                //println("hit");
+                int bi=int(ball.hitblock.x),bj=int(ball.hitblock.y);
+                blocks[bi][bj].exist=false;
+            
+            }
         }
         
         
@@ -84,7 +92,7 @@ void reset(){
 
     paddle=new Paddle(' ', 'A', 'D');
     
-    //初始化block;
+    // Initialize the block.初始化block;
     String level1 = "315 2232 414 41112";//See the first draft for understand, more levels will be designed later!图详见初版草稿，关卡会后续设计更多
     initializeLevel(level1);
 }
@@ -108,9 +116,7 @@ void drawPlayField(){
     stroke(0);strokeWeight(0);fill(97);
     rectMode(CORNERS);rect(playfield_Topleft.x,playfield_Topleft.y,playfield_Bottomright.x,playfield_Bottomright.y);
 }
-int collidBlocks(){
-    return 0;
-}  
+
 void startANewTurn(){//start a new shooting turn
     currentBalls.add(new Ball(paddle.middleX,paddle.pos.y-ballRadius,ballRadius));
 }
