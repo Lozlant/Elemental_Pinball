@@ -1,5 +1,6 @@
 # Elemental_Pinball
 This is the project for Assignment 5 Object Oriented Game by Yunhao Chen. 这是作业五的项目文件
+Use the AD keys to control the left and right movements of the paddle and the space bar to launch the ball.
 
 #milestone 1
 The milestone 1 branch were submitted around 8:00 PM on November 22, 2023, with the final version and subsequently merged into the main branch. The planned tasks and features were successfully completed, resulting in an initial version with basic functionalities ready for gameplay. milestone 1 分支在 2023年11月22日晚上8点左右提交最后一个版本，并且合并到main, 完成了计划中的任务和技能，形成了一个拥有基础功能的可供游玩的初始版本
