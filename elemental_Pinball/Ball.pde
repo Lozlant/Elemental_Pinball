@@ -4,7 +4,7 @@ class Ball{
     
     float radius;
 
-    char element;//Four types of element, ' ' for no attribute, 'T' equals thunder attribute, 'F' fire attribute, 'I' is ice attribute." //四种，‘ ’为无属性，‘T’等于雷属性，'F'火属性，‘I’是冰属性
+    Element element;
 
     int directionOfHitBlock;
     // 1 indicates collision from above, 2 indicates collision from below, 3 indicates collision from the left, 4 indicate
@@ -12,12 +12,12 @@ class Ball{
     Ball(float x,float y,float r){
         pos=new PVector(x,y);
         radius=r;
-        element=' ';
+        element=paddle.element;
         speed=new PVector(0,-7);
     }
     void move(){
         pos.add(speed);
-        directionOfHitBlock=collidBlocks();//返回hit的方向，并且计算出碰到了哪个块
+        directionOfHitBlock=collidBlocks();//Return the direction of the hit and calculate which block was impacted.返回hit的方向，并且计算出碰到了哪个块
         if(isBallCollidWithTopWall() || isBallCollidWithPaddle() || directionOfHitBlock==1 || directionOfHitBlock==2){ //Collid with the top or the paddle
             speed.y*=-1;
             speed.x+=random(-1,1);//Give the speed horizontal component a perturbation给水平分量一个扰动
@@ -31,7 +31,13 @@ class Ball{
         pos.y=constrain(pos.y,playfield_Topleft.y+radius,playfield_Bottomright.y-radius);//to ensure the ball doesn't go out of bounds
     }
     void show(){
-        stroke(0);strokeWeight(1);fill(255);
+        stroke(0);strokeWeight(1);
+        switch (element) {
+            case _NULL:fill(255);break;
+            case FIRE:fill(180,47,47);break;
+            case ICE:fill(75,177,255);break;
+            case THUNDER:fill(72,0,92);break;
+        }
         ellipse(pos.x, pos.y, radius*2, radius*2);
     }
     boolean isBallOutsideBounds(){
