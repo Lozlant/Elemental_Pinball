@@ -46,3 +46,24 @@ float, char, etc as an argument
 38. Use the PVector class
 39. Do some basic physics: use position, velocity, and acceleration (due to gravity) vectors
 49.Use collision detection between objects
+
+#milestone 2
+The milestone 2 branch were submitted around 10:00 PM on November 29, 2023, with the version and subsequently merged into the main branch.
+
+Completed tasks includes:
+Timer(Countdown）
+Write elemental reactions
+Artistic refinement of game objects
+Write countdown functionality
+
+The skills new involved in this submission include the following(skills numbered 15, 19, 22, 24-27, 31, 32, 44), totaling 10 skills
+15. switch statement
+19. What' s the difference between a for loop and a while loop? 
+22. What' s the difference between parameters and arguments?
+24. Pass by reference (objects): declare and use a function that takes an object as an argument
+25. What' s the difference between a class and an object?
+26. What is a constructor function? What does it do and when?
+27. Why should each class have its own tab in Processing?
+31. What' s the difference between an array and an ArrayList?
+32. Why would you want to go through a list backwards, decrementing the index?
+44. use a timer

@@ -1,0 +1,42 @@
+Answer questions
+
+19. What’s the difference between a for loop and a while loop? 
+For loop:
+The format of a for loop is:
+for (initialization; loop condition; loop processing) {
+    // Code block
+}
+It is typically employed for loops with a known and fixed number of iterations. The for loop is suitable for situations where the loop variable can be succinctly controlled and the iteration count is explicit.
+
+The format of a while loop is:
+while (loop condition) {
+    // Code block
+}
+While loops are generally used when dealing with more complex loop variables or conditions that may not be well-suited for a for loop. They are preferred when the loop's termination depends on a condition that remains clear throughout the iteration.
+
+22. What’s the difference between parameters and arguments?
+
+Parameters are local variables in a function that receive values from the calling program. They act as placeholders for the actual values that will be passed into the function when it is called.
+Arguments are the actual values or expressions that are passed into a function when it is called. These values are assigned to the parameters of the corresponding function during the function call.
+
+25. What’s the difference between a class and an object?
+A class defines a type of object, its attributes and methods the objects. An object is an instance of a class.
+
+26. What is a constructor function? What does it do and when?
+The constructor is to initialize the object's attributes. And it always sets the initial state of the object.
+
+27. Why should each class have its own tab in Processing?
+For organizational and management convenience, improved readability, and ease of portability.
+
+31. What’s the difference between an array and an ArrayList?
+Array is fixed in size and more memory-efficient, while ArrayList is dynamic and provide flexibility in terms of adding, removing, and manipulating elements.
+
+32. Why would you want to go through a list backwards, decrementing the index?
+If the processing logic involves dependencies between elements, iterating backward can ensure that elements with higher priority or dependency are processed first. When removing elements from a list while iterating, going backward can help avoid index out of bounds errors. Depending on the specific task, iterating backward might be more efficient.
+
+37. When should you use PVector instead of float variables?
+using PVector is particularly beneficial when dealing with multiple related variables that represent a single entity, such as coordinates or vectors, as it improves code organization, readability, and supports convenient vector operations.
+
+42. What is a normalized vector, why is it useful?
+Normalized vectors retain the direction information of the original vectors.
+
