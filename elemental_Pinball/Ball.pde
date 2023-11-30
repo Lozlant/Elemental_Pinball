@@ -13,7 +13,7 @@ class Ball{
         pos=new PVector(x,y);
         radius=r;
         element=paddle.element;
-        speed=new PVector(0,-7);
+        speed=new PVector(0,-5);
     }
     void move(){
         pos.add(speed);
