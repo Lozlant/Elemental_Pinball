@@ -31,7 +31,7 @@ void setup(){
     blocksize=(playfield_Bottomright.x-playfield_Topleft.x)/10;// Initialization must occur before constructing the block group.
     isBallMoving=false;
     paddle=new Paddle('A', 'D', 'J', 'L');
-    timer=new Timer(120);
+    timer=new Timer(0,10);
 
     imageLoad();
 
@@ -123,18 +123,6 @@ void draw(){
     paddle.move();
     paddle.show();//paddle shows in front of balls
      
-}
-
-void reset(){
-    currentBallsID=0;
-    score=0;
-    combo=0;
-
-    
-    
-    // Initialize the block.初始化block;
-    String level1 = "315 2232 414 41112";//See the first draft for understand, more levels will be designed later!图详见初版草稿，关卡会后续设计更多
-    initializeLevel(level1);
 }
 
 void keyPressed(){
