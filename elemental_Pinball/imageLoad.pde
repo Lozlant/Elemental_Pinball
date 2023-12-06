@@ -8,6 +8,10 @@ PImage howToReact_Show;
 PImage startButton_Show;
 PImage startText;
 
+PImage fireball;
+PImage thunderball;
+PImage iceball;
+
 void imageLoad(){
     settingButton_Show=loadImage("settingButton.png");
     elements_Show=loadImage("elementShow.png");
@@ -19,4 +23,8 @@ void imageLoad(){
     startText=loadImage("startText.png");
 
     howToReact_Show=loadImage("howToReact.png");
+
+    fireball=loadImage("fireball.png");
+    thunderball=loadImage("thunderball.png");
+    iceball=loadImage("iceball.png");
 }

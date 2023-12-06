@@ -35,13 +35,22 @@ class Ball{
     }
     void show(){
         stroke(0);strokeWeight(1);
+        imageMode(CENTER);
         switch (element) {
-            case _NULL:fill(255);break;
-            case FIRE:fill(180,47,47);break;
-            case ICE:fill(75,177,255);break;
-            case THUNDER:fill(72,0,92);break;
+            case _NULL:
+                fill(255);
+                break;
+            case FIRE:
+                image(fireball,pos.x,pos.y,radius*2,radius*2);
+                break;
+            case ICE:
+                image(iceball,pos.x,pos.y,radius*2,radius*2);
+                break;
+            case THUNDER:
+                image(thunderball,pos.x,pos.y,radius*2,radius*2);
+                break;
         }
-        ellipse(pos.x, pos.y, radius*2, radius*2);
+        imageMode(CORNER);
     }
     boolean isBallOutsideBounds(){
         return pos.y>=playfield_Bottomright.y-radius-5;//Out of bounds is judged when there is a little bit of distance to the bottom end 离底端还有一点距离的时候就判断为出界
