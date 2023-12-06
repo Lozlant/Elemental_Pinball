@@ -4,8 +4,8 @@ class Block{
     boolean exist;
     float size=blocksize;
 
-    Block(float i,float j,boolean f){
-        pos=new PVector(i*size+size/2+playfield_Topleft.x,j*size+size/2+playfield_Topleft.y);// Convert the position of the block to coordinates.
+    Block(int i,int j,boolean f){
+        pos=blocks_position[i][j];
         exist=f;
         element=Element._NULL;
     }
@@ -38,6 +38,7 @@ class Block{
         }
         else return React._NULL;
     }
+
 
 }
     

@@ -9,6 +9,7 @@ class Paddle{
     char e_leftKey,e_rightKey;
 
     boolean goLeft,goRight;
+    
 
     Paddle(char key1, char key2,char key3, char key4){
         leftKey=key1;rightKey=key2;e_leftKey=key3;e_rightKey=key4;
@@ -40,12 +41,12 @@ class Paddle{
     }
     void elementDirection(char key){
         //Switch the paddle's element using the 'J' and 'L' keys. 用'J''L'键 更换板的元素
-        if(key==e_leftKey){
+        if(key==e_leftKey  || key==e_leftKey+'a'-'A'){
             //print((paddle.element.ordinal() - 2)%3+1);
             element=Element.values()[(paddle.element.ordinal() +4)%3+1];
             //println(element);
         }
-        else if(key==e_rightKey){
+        else if(key==e_rightKey  || key==e_rightKey+'a'-'A'){
             element=Element.values()[paddle.element.ordinal()%3+1];
         }
     }
