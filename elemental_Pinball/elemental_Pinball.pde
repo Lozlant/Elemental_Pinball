@@ -11,6 +11,8 @@ Level level1;
 enum Element {_NULL,FIRE,ICE,THUNDER}
 enum React {_NULL,EXPLOSION,MELTING,SUPERCON}
 enum Direction{_NULL,UP,DOWN,LEFT,RIGHT}
+enum GameState{START,GAMING,SETTING,END}
+enum ButtonState{NORMAL,HOVER,CLICKED}
 
 int score;
 int combo;
@@ -25,11 +27,13 @@ PVector playfield_Bottomright=new PVector(291,313);//The coordinates of the top-
 float ballRadius=7;
 float blocksize;
 
-PImage settingButton;
-PImage elementsShow;
+GameState state;
+
+
 
 void setup(){
     size(400,400);
+    imageLoad();
     
     blocksize=(playfield_Bottomright.x-playfield_Topleft.x)/10;// Initialization must occur before constructing the block group.
     isBallMoving=false;
@@ -38,60 +42,30 @@ void setup(){
     level1 = new Level("315 2232 414 41112");//See the first draft for understand, more levels will be designed later!图详见初版草稿，关卡会后续设计更多
 
     initializeBlocksPosition();// Convert the position of the block to coordinates.
-    imageLoad();
+    
+
+    initializeButtons();
+    
+    state=GameState.GAMING;
 
     reset();
     startANewTurn();
 }
 
 void draw(){
-    background(255);
+    switch(state){
+        case START:
+            break;
+        case GAMING:
+            gamingPage();
+            break;
+        case SETTING:
+            settingMenu();
+            break;
+        case END:
+            break;
 
-    drawBackground();
-    drawRemainingBalls();//Draw the remaining balls.画出剩余的球
-
-    timer.show();
-    if(timer.isTimeEnd())reset();//Temporarily set the game to restart when the time runs out
-
-    for(int i=0;i<9;i++){
-        for(int j=0;j<8;j++){
-            blocks[i][j].show();//Display the level.显示关卡
-        }
     }
-    
-    if(isBallMoving){
-        for(int i=0;i<currentBalls.size();i++){//Go through all the balls
-            Ball ball=currentBalls.get(i);
-            
-            check_Paddle_Collid(ball);
-            check_Ball_Out(ball,i);
-            if(currentBalls.size()==0){isBallMoving=false;startANewTurn();}//If all the balls are gone, it's over. and restarted.
-
-            ball.move();
-
-            check_Block_Collid(ball);//Must be after the ball.move()
-
-            ball.show();
-        } 
-
-        if(combo>=3){// Split when achieving a combo of 5.
-            combo=0;
-            currentBalls.add(new Ball(currentBalls.get(0).pos.x,currentBalls.get(0).pos.y,ballRadius));// Split a ball at the position of the ball in sequence 0.
-            
-        }    
-    }
-    else{//If the ball hasn't been launched yet
-        Ball ball=currentBalls.get(0);
-
-        ball.pos.x=paddle.middleX;//Update the ball's x position to the center of the paddle
-        ball.element=paddle.element;//The ball element is updated to the paddle element
-        
-        ball.show();
-    }
-
-    paddle.move();
-
-    paddle.show();//paddle shows in front of balls
      
 }
 void startANewTurn(){//start a new shooting turn

@@ -6,6 +6,7 @@ void keyPressed(){
     }
     paddle.elementDirection(key);
     paddle.direction(key);
+
 }
 
 void keyReleased(){
