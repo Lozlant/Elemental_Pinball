@@ -22,11 +22,11 @@ class Ball{
     void move(){
         pos.add(speed);
         directionOfHitBlock=collidBlocks();//Return the direction of the hit and calculate which block was impacted.返回hit的方向，并且计算出碰到了哪个块
-        if(isBallCollidWithTopWall() || isBallCollidWithPaddle() || directionOfHitBlock==Direction.UP || directionOfHitBlock==Direction.DOWN){ //Collid with the top or the paddle
+        if(isBallCollidWithTopWall(playfield_Topleft.y) || isBallCollidWithPaddle() || directionOfHitBlock==Direction.UP || directionOfHitBlock==Direction.DOWN){ //Collid with the top or the paddle
             speed.y*=-1;
             speed.x+=random(-1,1);//Give the speed horizontal component a perturbation给水平分量一个扰动
         }
-        if(isBallCollidWithVerticalWall() || directionOfHitBlock==Direction.LEFT || directionOfHitBlock==Direction.RIGHT){//hit the vertical wal
+        if(isBallCollidWithVerticalWall(playfield_Topleft.x,playfield_Bottomright.x) || directionOfHitBlock==Direction.LEFT || directionOfHitBlock==Direction.RIGHT){//hit the vertical wal
             speed.x*=-1;
         }
 
@@ -51,12 +51,12 @@ class Ball{
         boolean f_width= pos.x>=paddle.pos.x && pos.x<=paddle.pos.x+paddle.width_;//Determine if you are within the width of the counterattack
         return f_height && f_width;
     }
-    boolean isBallCollidWithTopWall(){
-        return pos.y<=playfield_Topleft.y+radius;
+    boolean isBallCollidWithTopWall(float topY){
+        return pos.y<=topY+radius;
     }
-    boolean isBallCollidWithVerticalWall(){
-        boolean f_left= pos.x<=playfield_Topleft.x+radius;
-        boolean f_right= pos.x>=playfield_Bottomright.x-radius;
+    boolean isBallCollidWithVerticalWall(float leftX,float rightX){
+        boolean f_left= pos.x<= leftX+radius;
+        boolean f_right= pos.x>=rightX-radius;
         return f_left||f_right;
     }
 
@@ -70,7 +70,7 @@ class Ball{
 
     boolean collidBlocks_Direction(float dx,float dy){
         hitblock=inwhichBlock(pos.x+dx,pos.y+dy);
-//        println("A",i,j);
+        //        println("A",i,j);
         if(hitblock.x<9 && hitblock.x>=0 && hitblock.y<8  && hitblock.y>=0)return blocks[hitblock.x][hitblock.y].exist;
         return false;
     }
@@ -93,8 +93,33 @@ class Ball{
             }
         }
         //println("ball position error",x,y);stop();
-        return new PVector_Int(-1,-1);
-        
+        return new PVector_Int(-1,-1);    
     }
 
+}
+
+class StartBall extends Ball{
+    StartBall(float x, float y, float r){
+        super(x,y,r);
+    }
+    void move(){
+        pos.add(speed);
+        if(isBallCollidWithHorizontalWall(0,329)){
+            speed.y*=-1;
+            speed.x+=random(-1,1);
+        }
+        if(super.isBallCollidWithVerticalWall(0,width)){
+            speed.x*=-1;
+        }
+
+        pos.x=constrain(pos.x,0,width);
+        pos.y=constrain(pos.y,0,height);
+
+    }
+    void show(){
+        super.show();
+    }
+    boolean isBallCollidWithHorizontalWall(float topY,float bottomY){
+        return pos.y<=topY+radius || pos.y>=bottomY-radius;
+    }
 }

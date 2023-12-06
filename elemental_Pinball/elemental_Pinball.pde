@@ -41,12 +41,14 @@ void setup(){
     timer=new Timer(2,0);
     level1 = new Level("315 2232 414 41112");//See the first draft for understand, more levels will be designed later!图详见初版草稿，关卡会后续设计更多
 
+    startBall=new StartBall(width/2,250,30);
+
     initializeBlocksPosition();// Convert the position of the block to coordinates.
     
 
     initializeButtons();
     
-    state=GameState.GAMING;
+    state=GameState.START;
 
     reset();
     startANewTurn();
@@ -55,6 +57,7 @@ void setup(){
 void draw(){
     switch(state){
         case START:
+            startPage();
             break;
         case GAMING:
             gamingPage();

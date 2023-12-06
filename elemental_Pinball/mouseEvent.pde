@@ -1,21 +1,28 @@
 void mousePressed(){
     switch(state){
+        case START:
+            startButton.clicked();
+            break;
         case GAMING:
-            if(settingButton.buttonState==ButtonState.HOVER)settingButton.clicked();
+            settingButton.clicked();
             break;
         case SETTING:
-            if(backButton.buttonState==ButtonState.HOVER)backButton.clicked();
+            backButton.clicked();
             break;
     }
 }
 
 void mouseReleased() {
     switch(state){
+        case START:
+            startButton.released();
+            reset();
+            break;
         case GAMING:
-            if(settingButton.buttonState==ButtonState.CLICKED)settingButton.released();
+            settingButton.released();
             break;
         case SETTING:
-            if(backButton.buttonState==ButtonState.CLICKED)backButton.released();
+            backButton.released();
             break;
     }
 }
