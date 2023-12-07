@@ -66,4 +66,18 @@ The skills new involved in this submission include the following(skills numbered
 27. Why should each class have its own tab in Processing?
 31. What' s the difference between an array and an ArrayList?
 32. Why would you want to go through a list backwards, decrementing the index?
-44. use a timer
+
+#milestone 3
+The milestone 3 branch were submitted around 10:00 PM on December 6, 2023, with the version and subsequently merged into the main branch. 
+The game has become a completed version.
+
+Completed tasks includes:
+Design menu
+Button design
+Enhance gameplay
+
+
+The skills new involved in this submission include the following
+43. Using the Processing documentation look up a method in the PVector class that’s new to you and use it in your code.
+45. Switch between “game states” (eg grounded/jumping) using conditional statements
+46. Make a button or toggle switch with a roll-over highlight (color or size change)
