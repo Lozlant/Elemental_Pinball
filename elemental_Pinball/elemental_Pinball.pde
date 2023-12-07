@@ -7,6 +7,7 @@ Block[][] blocks = new Block[9][8];//9 blocks per line, 8 lines
 PVector[][] blocks_position=new PVector[9][8];
 Timer timer;
 Level level1;
+Score score;
 
 enum Element {_NULL,FIRE,ICE,THUNDER}
 enum React {_NULL,EXPLOSION,MELTING,SUPERCON}
@@ -14,7 +15,6 @@ enum Direction{_NULL,UP,DOWN,LEFT,RIGHT}
 enum GameState{START,GAMING,SETTING,END}
 enum ButtonState{NORMAL,HOVER,CLICKED}
 
-int score;
 int combo;
 int currentBallsID;//The ID of the current activated ball.已经激活的球的编号
 ArrayList<Ball> currentBalls= new ArrayList<Ball>();
@@ -39,6 +39,7 @@ void setup(){
     isBallMoving=false;
     paddle=new Paddle('A', 'D', 'J', 'L');
     timer=new Timer(2,0);
+    score=new Score();
     level1 = new Level("315 2232 414 41112");//See the first draft for understand, more levels will be designed later!图详见初版草稿，关卡会后续设计更多
 
     startBall=new StartBall(width/2,250,30);
@@ -49,9 +50,7 @@ void setup(){
     initializeButtons();
     
     state=GameState.START;
-
-    reset();
-    startANewTurn();
+    resetGame();
 }
 
 void draw(){
@@ -66,14 +65,10 @@ void draw(){
             settingMenu();
             break;
         case END:
+            endPage();
             break;
 
     }
      
 }
-void startANewTurn(){//start a new shooting turn
-    timer.timeStart();
-    currentBalls.add(new Ball(paddle.middleX,paddle.pos.y-ballRadius,ballRadius));
-}
-
 

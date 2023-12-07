@@ -36,9 +36,14 @@ class Button{
         if(buttonState==ButtonState.HOVER)
             buttonState=ButtonState.CLICKED;
     }
-    void released(){
+    void released(int i){
         if(buttonState==ButtonState.CLICKED){
             state=toState;
+            switch(toState){
+                case GAMING:
+                    if(i==1)resetGame();
+                    break;
+            }
             buttonState=ButtonState.NORMAL;
         }
     }

@@ -3,8 +3,6 @@ StartBall startBall;
 void startPage(){
     background(255);
     
-    
-    
     startBall.move();
     startBall.show();
 

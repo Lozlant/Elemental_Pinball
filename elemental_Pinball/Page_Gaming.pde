@@ -1,12 +1,11 @@
 void gamingPage(){
     background(255);
     drawBackground();
-    drawRemainingBalls();//Draw the remaining balls.画出剩余的球
 
     settingButton.show();
 
     timer.show();
-    if(timer.isTimeEnd())reset();//Temporarily set the game to restart when the time runs out
+    if(timer.isTimeEnd())state=GameState.END;//Temporarily set the game to restart when the time runs out
 
     for(int i=0;i<9;i++){
         for(int j=0;j<8;j++){
@@ -20,7 +19,7 @@ void gamingPage(){
             
             check_Paddle_Collid(ball);
             check_Ball_Out(ball,i);
-            if(currentBalls.size()==0){isBallMoving=false;startANewTurn();}//If all the balls are gone, it's over. and restarted.
+            if(currentBalls.size()==0){isBallMoving=false;state=GameState.END;}//If all the balls are gone, it's over. and restarted.
 
             ball.move();
 
@@ -49,12 +48,16 @@ void gamingPage(){
     paddle.show();//paddle shows in front of balls
 }
 
-void drawRemainingBalls() {
-    //the code for drawing the remaining balls 画出剩余的球的逻辑
-}
-
 void drawBackground(){
-   
+
+    //draw score
+    rectMode(CORNER);
+    stroke(0);strokeWeight(1);fill(255);
+    rect(300,74,95,40.5);
+    
+    textSize(25);fill(0);textAlign(CENTER);
+    text(score.count,347.5,105);
+
     howToPlay();
     drawPlayField();
 }

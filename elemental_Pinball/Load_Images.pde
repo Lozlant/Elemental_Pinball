@@ -1,6 +1,9 @@
 PImage settingButton_Show;
 PImage elements_Show;
+
 PImage settingMenu_Show;
+PImage endMenu_Show;
+
 PImage backButtun_Show;
 PImage gameTitle_Show;
 PImage howToReact_Show;
@@ -38,4 +41,5 @@ void imageLoad(){
 
     mainMenuText=loadImage("mainMenuText.png");
     endTheGameText=loadImage("endTheGameText.png");
+    endMenu_Show=loadImage("endMenu.png");
 }
