@@ -11,6 +11,10 @@ PImage startText;
 PImage fireball;
 PImage thunderball;
 PImage iceball;
+PImage settingMenuButton_Show;
+PImage howToPlayText;
+PImage mainMenuText;
+PImage endTheGameText;
 
 void imageLoad(){
     settingButton_Show=loadImage("settingButton.png");
@@ -27,4 +31,11 @@ void imageLoad(){
     fireball=loadImage("fireball.png");
     thunderball=loadImage("thunderball.png");
     iceball=loadImage("iceball.png");
+
+    settingMenuButton_Show=loadImage("settingMenuButton.png");
+
+    howToPlayText=loadImage("howToPlayText.png");
+
+    mainMenuText=loadImage("mainMenuText.png");
+    endTheGameText=loadImage("endTheGameText.png");
 }

@@ -8,6 +8,7 @@ void mousePressed(){
             break;
         case SETTING:
             backButton.clicked();
+            mainMenuButton.clicked();
             break;
     }
 }
@@ -23,6 +24,7 @@ void mouseReleased() {
             break;
         case SETTING:
             backButton.released();
+            mainMenuButton.released();
             break;
     }
 }

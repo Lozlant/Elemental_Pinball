@@ -4,4 +4,8 @@ void settingMenu(){
     image(settingMenu_Show,0,0,400,400);
 
     backButton.show();
+    howToPlayButton.show();
+    mainMenuButton.show();
+    endTheGameButton.show();
+    
 }
