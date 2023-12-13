@@ -15,7 +15,7 @@ class Paddle{
         leftKey=key1;rightKey=key2;e_leftKey=key3;e_rightKey=key4;
         element=Element.ICE;
 
-        width_=64;
+        width_=100;
         pos=new PVector((playfield_Topleft.x+playfield_Bottomright.x-width_)/2,287);//comfirm the coordinate
         
         speed=5;

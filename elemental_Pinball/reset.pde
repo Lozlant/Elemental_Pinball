@@ -9,6 +9,5 @@ void resetGame(){
     
     
     // Initialize the block.初始化block;
-
-    level1.initialize();
+    levels[int(random(0,3))].initialize();
 }

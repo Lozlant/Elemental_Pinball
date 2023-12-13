@@ -10,9 +10,14 @@ void mousePressed(){
             backButton.clicked();
             mainMenuButton.clicked();
             endTheGameButton.clicked();
+            howToPlayButton.clicked();
+            break;
+        case INTRO:
+            backButton.clicked();
             break;
         case END:
             startButton.clicked();
+            break;
     }
 }
 
@@ -28,6 +33,10 @@ void mouseReleased() {
             backButton.released(0);
             mainMenuButton.released(0);
             endTheGameButton.released(0);
+            howToPlayButton.released(0);
+            break;
+        case INTRO:
+            backButton.released(0);
             break;
         case END:
             startButton.released(1);

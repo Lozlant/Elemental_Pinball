@@ -87,7 +87,7 @@ void initializeButtons(){
     settingButton=new Button(settingButton_Show,GameState.SETTING,333,25,32,33);
 
     startButton=new Button_withText(startButton_Show,GameState.GAMING,73,329,268,30.5,startText,141,333.5,134.5,23.5);
-    howToPlayButton=new Button_withText(settingMenuButton_Show,GameState.GAMING,72,125,257,50.5,howToPlayText,98,132,196,38);
+    howToPlayButton=new Button_withText(settingMenuButton_Show,GameState.INTRO,72,125,257,50.5,howToPlayText,98,132,196,38);
     mainMenuButton=new Button_withText(settingMenuButton_Show,GameState.START,72,199.5,257,50.5,mainMenuText,102,210.5,199.5,30);
     endTheGameButton=new Button_withText(settingMenuButton_Show,GameState.END,72,274,257,50.5,endTheGameText,109.5,282.5,208,34);
 
