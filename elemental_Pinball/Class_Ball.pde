@@ -21,10 +21,10 @@ class Ball{
     }
     void move(){
         pos.add(speed);
-        directionOfHitBlock=collidBlocks();//Return the direction of the hit and calculate which block was impacted.返回hit的方向，并且计算出碰到了哪个块
+        directionOfHitBlock=collidBlocks();//Return the direction of the hit and calculate which block was impacted.
         if(isBallCollidWithTopWall(playfield_Topleft.y) || isBallCollidWithPaddle() || directionOfHitBlock==Direction.UP || directionOfHitBlock==Direction.DOWN){ //Collid with the top or the paddle
             speed.y*=-1;
-            speed.x+=random(-1,1);//Give the speed horizontal component a perturbation给水平分量一个扰动
+            speed.x+=random(-1,1);//Give the speed horizontal component a perturbation
         }
         if(isBallCollidWithVerticalWall(playfield_Topleft.x,playfield_Bottomright.x) || directionOfHitBlock==Direction.LEFT || directionOfHitBlock==Direction.RIGHT){//hit the vertical wal
             speed.x*=-1;
@@ -53,7 +53,7 @@ class Ball{
         imageMode(CORNER);
     }
     boolean isBallOutsideBounds(){
-        return pos.y>=playfield_Bottomright.y-radius-5;//Out of bounds is judged when there is a little bit of distance to the bottom end 离底端还有一点距离的时候就判断为出界
+        return pos.y>=playfield_Bottomright.y-radius-5;//Out of bounds is judged when there is a little bit of distance to the bottom end 
     }
     boolean isBallCollidWithPaddle(){
         boolean f_height= pos.y>=paddle.pos.y-radius && pos.y<=paddle.pos.y;//Determine if you are within the height of the counterattack
@@ -85,7 +85,7 @@ class Ball{
     }
 
     PVector_Int inwhichBlock(float x, float y){//Calculate which block contains this coordinate.
-        for(int i=0;i<9;i++){//遍历bloks的坐标，查看坐标在哪个block上
+        for(int i=0;i<9;i++){//Iterate over the coordinates of the blocks to see which block the coordinates are on
             float bx=blocks_position[i][0].x;
             
             if(x>bx && x<=bx+blocksize){
@@ -107,11 +107,11 @@ class Ball{
 
 }
 
-class StartBall extends Ball{
+class StartBall extends Ball{//Extends a class to the balls of the main menu
     StartBall(float x, float y, float r){
         super(x,y,r);
     }
-    void move(){
+    void move(){//Has its own speed and collision rules, and the position of the flick is above the START button
         pos.add(speed);
         if(isBallCollidWithHorizontalWall(0,329)){
             speed.y*=-1;
@@ -125,9 +125,7 @@ class StartBall extends Ball{
         pos.y=constrain(pos.y,0,height);
 
     }
-    void show(){
-        super.show();
-    }
+
     boolean isBallCollidWithHorizontalWall(float topY,float bottomY){
         return pos.y<=topY+radius || pos.y>=bottomY-radius;
     }

@@ -1,4 +1,4 @@
-void _howToPlay() {
+void howToPlay() {
   background(255); 
   fill(0); 
   textSize(12); 

@@ -40,7 +40,7 @@ void check_Block_Collid(Ball ball){
                 =Element.ICE;
                 break;
 
-            case SUPERCON:// Eliminate the three blocks horizontally.消除水平的三个方块
+            case SUPERCON:// Eliminate the three blocks horizontally.
                 score.count+=3;
 
                 blocks[bi][bj].exist

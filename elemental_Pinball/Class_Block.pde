@@ -4,15 +4,15 @@ class Block{
     boolean exist;
     float size=blocksize;
 
-    Block(int i,int j,boolean f){
+    Block(int i,int j,boolean f){//Get the number and state of the Block
         pos=blocks_position[i][j];
         exist=f;
         element=Element._NULL;
     }
     void show(){
-        if(!exist)return;
+        if(!exist)return;//If the block does not exist, it doesn't show
         stroke(0);strokeWeight(1);
-        switch (element) {
+        switch (element) {// Display blocks of different colors depending on the element
             case _NULL:fill(255);break;
             case FIRE:fill(232,65,109);break;
             case ICE:fill(99,127,191);break;
@@ -20,12 +20,12 @@ class Block{
         }
         rectMode(CORNER);rect(pos.x,pos.y,size,size);
     }
-    React react(Ball ball){
+    React react(Ball ball){// The ball reacts with the block
         if(element==Element._NULL){
-            element=ball.element; return React._NULL;
+            element=ball.element; return React._NULL;//If the block has no elements, it gets the elements of the ball
         }            
         else if(element==Element.FIRE && ball.element==Element.THUNDER
-        || element==Element.THUNDER && ball.element==Element.FIRE){
+        || element==Element.THUNDER && ball.element==Element.FIRE){//Three elemental reactions were recorded
             return React.EXPLOSION;
         }
         else if(element==Element.FIRE && ball.element==Element.ICE

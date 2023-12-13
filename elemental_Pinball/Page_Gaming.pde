@@ -1,3 +1,5 @@
+boolean isBallMoving;
+
 void gamingPage(){
     background(255);
     drawBackground();
@@ -9,7 +11,7 @@ void gamingPage(){
 
     for(int i=0;i<9;i++){
         for(int j=0;j<8;j++){
-            blocks[i][j].show();//Display the level.显示关卡
+            blocks[i][j].show();//Display the level.
         }
     }
     
@@ -60,6 +62,7 @@ void drawBackground(){
 
     drawPlayField();
 
+    // Draw the prompts at the bottom of the game field
     rectMode(CORNER);
     stroke(0);strokeWeight(1);fill(255);
     rect(13,326,290,70);

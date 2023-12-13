@@ -27,7 +27,7 @@ class Paddle{
             pos.x=constrain(pos.x+speed, playfield_Topleft.x+5, playfield_Bottomright.x-width_-5);
         if(goLeft)
             pos.x=constrain(pos.x-speed, playfield_Topleft.x+5, playfield_Bottomright.x-width_-5);
-        middleX=pos.x+width_/2;//update the middleX 更新中心位置
+        middleX=pos.x+width_/2;//update the middleX
     }
 
     void direction(char key){
@@ -40,7 +40,7 @@ class Paddle{
         else if(key==rightKey || key==rightKey+'a'-'A')goRight=false;
     }
     void elementDirection(char key){
-        //Switch the paddle's element using the 'J' and 'L' keys. 用'J''L'键 更换板的元素
+        //Switch the paddle's element using the 'J' and 'L' keys. 
         if(key==e_leftKey  || key==e_leftKey+'a'-'A'){
             //print((paddle.element.ordinal() - 2)%3+1);
             element=Element.values()[(paddle.element.ordinal() +4)%3+1];
